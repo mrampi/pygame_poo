@@ -38,7 +38,10 @@ class Game(Config):
 
     def blit_heroe(self):
         self.screen.blit(self.heroe.image, self.heroe.rect)
-        
+        self.screen.blit(self.heroe.mouth.image, self.heroe.mouth.rect)
+        # py.draw.rect(self.screen, BLANCO, self.heroe.rect, 3)
+        # py.draw.rect(self.screen, BLANCO, self.heroe.mouth.rect, 3)
+
     def blit_falling_objects(self):
         for fo in self.falling_objects:
             fo.move_down()

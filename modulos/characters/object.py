@@ -19,19 +19,27 @@ class Object:
     def set_speed(self, speed):
         self.speed = speed
 
-    def move_right(self):
+    def move_right(self, speed=None):
+        if speed:
+            self.set_speed(speed)
         self.direction = EOrientation.RIGHT
         self.move()
 
-    def move_left(self):
+    def move_left(self, speed):
+        if speed:
+            self.set_speed(speed)
         self.direction = EOrientation.LEFT
         self.move()
 
-    def move_up(self):
+    def move_up(self, speed):
+        if speed:
+            self.set_speed(speed)
         self.direction = EOrientation.UP
         self.move()
     
-    def move_down(self):
+    def move_down(self, speed):
+        if speed:
+            self.set_speed(speed)
         self.direction = EOrientation.DOWN
         self.move()
     
