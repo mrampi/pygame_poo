@@ -7,14 +7,20 @@ from modulos.characters.object import Object
 class Heroe(Object):
 
     def __init__(self, size, position=(0,0), speed=5) -> None:
+        self.mouth = Object((20, 10), (0, 0))
+        
         super().__init__(size, position)
+        
         self.points = 0
+
+        self.mouth.set_speed(speed)
         self.set_speed(speed)
 
-        self.mouth = Object((20, 10), (0, 0))
-        self.mouth.set_speed(speed)
-        
         self.mouth.rect.center = self.rect.center
+
+    def set_speed(self, speed):
+        self.speed = speed
+        self.mouth.set_speed(speed)
 
     def move_right(self, top_right):
         new_x = self.rect.x + self.speed

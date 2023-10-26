@@ -5,7 +5,7 @@ from modulos.values.eorientation import EOrientation
 class Object:
 
     def __init__(self, size_surface, position) -> None:
-        self.set_speed(0)
+        # self.speed = 0
 
         self.image = py.Surface(size_surface)
 
@@ -15,6 +15,8 @@ class Object:
         self.rect.y = position[1]
 
         self.direction = EOrientation.IDLE
+        
+        self.set_speed(0)
     
     def set_speed(self, speed):
         self.speed = speed
