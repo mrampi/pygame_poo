@@ -26,7 +26,7 @@ class Object:
 
     def load_image(self, path, size_surface):
         image = py.image.load(path)
-        image = py.transform.scale(self.image, size_surface)
+        image = py.transform.scale(image, size_surface)
 
         return image
     
