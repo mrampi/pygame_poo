@@ -4,10 +4,16 @@ from modulos.values.eorientation import EOrientation
 
 class Object:
 
-    def __init__(self, size_surface, position) -> None:
+    def __init__(self, size_surface, position, path=None) -> None:
         # self.speed = 0
 
-        self.image = py.Surface(size_surface)
+        # Version pre imagenes.
+        if path == None:
+            self.image = py.Surface(size_surface)
+        else:
+            # self.image = self.load_image(path, size_surface)
+            self.image = py.image.load(path)
+            self.image = py.transform.scale(self.image, size_surface)
 
         self.rect = self.image.get_rect()
         
@@ -17,6 +23,12 @@ class Object:
         self.direction = EOrientation.IDLE
         
         self.set_speed(0)
+
+    def load_image(self, path, size_surface):
+        image = py.image.load(path)
+        image = py.transform.scale(self.image, size_surface)
+
+        return image
     
     def set_speed(self, speed):
         self.speed = speed
@@ -24,6 +36,7 @@ class Object:
     def move_right(self, speed=None):
         if speed:
             self.set_speed(speed=None)
+
         self.direction = EOrientation.RIGHT
         self.move()
 
@@ -36,12 +49,14 @@ class Object:
     def move_up(self, speed=None):
         if speed:
             self.set_speed(speed=None)
+
         self.direction = EOrientation.UP
         self.move()
     
     def move_down(self, speed=None):
         if speed:
             self.set_speed(speed)
+
         self.direction = EOrientation.DOWN
         self.move()
     
@@ -63,3 +78,5 @@ class Object:
         else:
             raise ValueError('Invalid direction')
    
+    def blit(self, screen):
+        screen.blit(self.image, self.rect)

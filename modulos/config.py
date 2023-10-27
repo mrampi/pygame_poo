@@ -1,10 +1,13 @@
 import pygame as py
+
+from modulos.values.assets import BACKGROUND_IMAGE
 FPS = 60
 
 class Config:
 
     def __init__(self, size, FPS, caption="Title", icon=""):
         py.mixer.init()
+        
         self.size = size
 
         self.screen = py.display.set_mode(self.size)
@@ -40,8 +43,9 @@ class Config:
     def stop_music(self):
         self.music.stop()
 
-    def set_background_image(self):
-        pass
+    def set_background_image(self, background):
+        self.background_image = py.image.load(background)
+        self.background_image = py.transform.scale(self.background_image, self.size)
 
     def set_fuente(self):
         pass
@@ -49,4 +53,5 @@ class Config:
     def fill_screen(self, color=None):
         if color != None:
             self.screen.fill(color)
-        # self.screen.fill(color)
+        else:
+            self.screen.blit(self.background_image, (0, 0))

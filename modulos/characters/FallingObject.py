@@ -1,9 +1,11 @@
 from modulos.characters.object import Object
 import random
 
+from modulos.values.assets import HONGO_IMAGE
+
 class FallingObject(Object):
     def __init__(self, size_surface, position, screen) -> None:
-        super().__init__(size_surface, position)
+        super().__init__(size_surface, position, HONGO_IMAGE)
 
         self.screen = screen
         self.set_random_position()
